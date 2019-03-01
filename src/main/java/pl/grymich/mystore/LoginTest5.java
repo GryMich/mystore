@@ -7,23 +7,23 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest2 {
+public class LoginTest5 {
 
     public static void main(String[] args) {
   
     	System.setProperty("webdriver.chrome.driver","C:\\Users\\MICHAŁ\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait myWaitVar = new WebDriverWait (driver, 10);
-		
+				
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("awd@wd.pl");
-		driver.findElement(By.name("passwd")).sendKeys("qwery");
+	   	driver.findElement(By.name("email")).sendKeys("0@0.pl");
+		driver.findElement(By.name("passwd")).sendKeys("qwer");
 		driver.findElement(By.name("SubmitLogin")).click();
 		
 		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column > div.alert.alert-danger")));
 		driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger"));
-		
+				
 		String expectedAlertMessage = "Authentication failed.";
         String alertMessage = driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger > ol > li")).getText();
         
@@ -34,7 +34,6 @@ public class LoginTest2 {
         }
     
         System.out.println(alertMessage);	
-       				
 	    
 		/*driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/li[1]/a")).click();
 		driver.findElement(By.linkText("Logout")).click();

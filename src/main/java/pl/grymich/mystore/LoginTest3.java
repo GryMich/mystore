@@ -15,28 +15,26 @@ public class LoginTest3 {
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait myWaitVar = new WebDriverWait (driver, 10);
 		
-		String actualURL ="";
-		String expectedURL = "";
-		
+	
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("awd@wd.pl");
-		driver.findElement(By.name("passwd")).sendKeys("qwerty");
-		driver.findElement(By.name("SubmitLogin")).click();
+	   	driver.findElement(By.id("email")).sendKeys("0@0.pl");
+		driver.findElement(By.id("passwd")).sendKeys("qwerty");
+		driver.findElement(By.id("SubmitLogin")).click();
 		
-		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.className("account")));
-		driver.findElement(By.className("account"));
-		
-		
-		
-		expectedURL = ("http://automationpractice.com/index.php?controller=my-account");
-		actualURL = driver.getCurrentUrl();
-		
-		 if (actualURL.contentEquals(expectedURL)){
-	            System.out.println("Test Passed!");
-	        } else {
-	            System.out.println("Test Failed");
-	        }
+		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column > div.alert.alert-danger")));
+		driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger"));
+				
+		String expectedAlertMessage = "Authentication failed.";
+        String alertMessage = driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger > ol > li")).getText();
+        
+        if (alertMessage.contentEquals(expectedAlertMessage)){
+            System.out.println("Test Passed!");
+        } else {
+            System.out.println("Test Failed");
+        }
+    
+        System.out.println(alertMessage);	
 	    
 		/*driver.findElement(By.xpath("/html/body/nav/div/div[2]/ul[2]/ul/li[1]/a")).click();
 		driver.findElement(By.linkText("Logout")).click();
