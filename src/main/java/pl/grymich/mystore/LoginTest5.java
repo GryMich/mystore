@@ -17,14 +17,14 @@ public class LoginTest5 {
 				
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("0@0.pl");
+	   	driver.findElement(By.name("email")).sendKeys("awd@wd.pl");
 		driver.findElement(By.name("passwd")).sendKeys("qwer");
 		driver.findElement(By.name("SubmitLogin")).click();
 		
 		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column > div.alert.alert-danger")));
 		driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger"));
 				
-		String expectedAlertMessage = "Authentication failed.";
+		String expectedAlertMessage = "Invalid password.";
         String alertMessage = driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger > ol > li")).getText();
         
         if (alertMessage.contentEquals(expectedAlertMessage)){
