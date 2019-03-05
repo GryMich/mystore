@@ -17,7 +17,7 @@ public class LoginTest2 {
 		
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("awd@wd.pl");
+	   	driver.findElement(By.name("email")).sendKeys("andrzej@test.com");
 		driver.findElement(By.name("passwd")).sendKeys("qwery");
 		driver.findElement(By.name("SubmitLogin")).click();
 		

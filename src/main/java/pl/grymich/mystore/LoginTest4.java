@@ -17,8 +17,8 @@ public class LoginTest4 {
 				
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("0@0.pl");
-		driver.findElement(By.name("passwd")).sendKeys("qwerta");
+	   	driver.findElement(By.name("email")).sendKeys("andrze@test.com");
+		driver.findElement(By.name("passwd")).sendKeys("qwert");
 		driver.findElement(By.name("SubmitLogin")).click();
 		
 		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column > div.alert.alert-danger")));

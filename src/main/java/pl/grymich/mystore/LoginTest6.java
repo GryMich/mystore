@@ -7,7 +7,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.concurrent.TimeUnit;
 
-public class LoginTest5 {
+public class LoginTest6 {
 
     public static void main(String[] args) {
   
@@ -17,14 +17,12 @@ public class LoginTest5 {
 				
 		driver.get("http://automationpractice.com/");
 	    driver.findElement(By.className("login")).click();
-	   	driver.findElement(By.name("email")).sendKeys("andrzej@test.com");
-		driver.findElement(By.name("passwd")).sendKeys("qwer");
-		driver.findElement(By.name("SubmitLogin")).click();
+			driver.findElement(By.name("SubmitLogin")).click();
 		
 		myWaitVar.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#center_column > div.alert.alert-danger")));
 		driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger"));
 				
-		String expectedAlertMessage = "Invalid password.";
+		String expectedAlertMessage = "An email address required.";
         String alertMessage = driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger > ol > li")).getText();
         
         if (alertMessage.contentEquals(expectedAlertMessage)){
