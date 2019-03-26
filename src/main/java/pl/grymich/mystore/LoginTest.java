@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 public class LoginTest {
 
     public static void main(String[] args) {
-  
+    	
     	System.setProperty("webdriver.chrome.driver","C:\\Users\\MICHAŁ\\chromedriver.exe");
 		WebDriver driver = new ChromeDriver();
 		WebDriverWait myWaitVar = new WebDriverWait (driver, 10);
