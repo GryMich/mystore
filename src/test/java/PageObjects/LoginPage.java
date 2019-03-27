@@ -33,8 +33,8 @@ public class LoginPage {
 		PageFactory.initElements(driver, this);
 	}
 	
-	public void loginUser(String login, String pass) {
-		emailSIField.sendKeys(login);
+	public void loginUser(String email, String pass) {
+		emailSIField.sendKeys(email);
 		passwdField.sendKeys(pass);
 		loginBtn.click();
 	}

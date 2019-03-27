@@ -11,7 +11,7 @@ public class HomePage {
 	
 	WebDriver driver;
 	
-	@FindBy(className="login")
+	@FindBy(linkText="Sign in")
 	WebElement signInBtn;
 	
 		
