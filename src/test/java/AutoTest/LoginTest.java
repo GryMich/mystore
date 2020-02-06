@@ -7,11 +7,12 @@ import org.openqa.selenium.WebDriver;
 
 import PageObjects.HomePage;
 import PageObjects.LoginPage;
+import PageObjects.ProfilePage;
 import pl.grymich.mystore.Init;
 
 
 
-public class Case1Test {
+public class LoginTest {
 	
 	WebDriver driver = null;
 
@@ -21,17 +22,23 @@ public class Case1Test {
 	}
 	
 	@Test
-	public void loginVar1 () {
+	public void SuccessFullLoginIntoAccount () {
 		HomePage homePage = new HomePage ();
 		homePage.goToLoginPage();
 		LoginPage loginPage = new LoginPage ();
 		loginPage.loginUser("andrzej@test.com", "qwerty");
+		ProfilePage profilePage = new ProfilePage();
+		profilePage.ProfilePageVeryfication();
 	}
-	{
-		Init.sleep(5000);
-		
-	}	
-	
+
+	@Test
+	public void LoginIntoAccountUsingWrongPassword () {
+		HomePage homePage = new HomePage ();
+		homePage.goToLoginPage();
+		LoginPage loginPage = new LoginPage ();
+		loginPage.loginUser("andrzej@test.com", "qwert");
+		loginPage.RegistrationAlert();
+	}
 	@After
 	public void close() {
 		Init.endTest();
