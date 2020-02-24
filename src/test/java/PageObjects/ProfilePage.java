@@ -20,7 +20,7 @@ public class ProfilePage {
 		driver = Init.getDriver();
 		PageFactory.initElements(driver, this);
 	}
-public void ProfilePageVeryfication() {
+public void profilePageVeryfication() {
 	
 	String expectedTitle = "MY ACCOUNT";
 	

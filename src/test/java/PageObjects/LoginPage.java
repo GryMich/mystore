@@ -1,5 +1,9 @@
 package PageObjects;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hamcrest.core.IsCollectionContaining;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,8 +34,8 @@ public class LoginPage {
 	@FindBy (id = "SubmitCreate")
 	WebElement submitBtn;
 
-	@FindBy (css = "(\"#center_column > div.alert.alert-danger > ol > li\").getText())")
-	WebElement alertMessaqe;
+	@FindBy(css = "#center_column > .alert li")
+    private List<WebElement> alertMessage;
 
 	public LoginPage () {
 		driver = Init.getDriver();
@@ -43,20 +47,30 @@ public class LoginPage {
 		passwdField.sendKeys(pass);
 		loginBtn.click();
 	}
+	public void passwordAlert() {
+		
+		String invalidPasswordAlert = "Invalid password.";
+		Assert.assertThat(getAlertContent(), IsCollectionContaining.hasItem(invalidPasswordAlert));
+	}
 	
+	public void emailAlert() {
+		
+		String emailRequiredAlert = "An email address required.";
+		Assert.assertThat(getAlertContent(), IsCollectionContaining.hasItem(emailRequiredAlert));
+	}
 	
-    public void RegistrationAlert() {
+    public void registrationAlert() {
     	
-    	String expectedAlertMessage = "Authentication failed.";
-    	
-        String alertMessage = driver.findElement(By.cssSelector("#center_column > div.alert.alert-danger > ol > li")).getText();
-    	if (alertMessage.contentEquals(expectedAlertMessage)){
-            System.out.println("Test Passed!");
-        } else {
-            System.out.println("Test Failed");
-        }
-    
-        System.out.println(alertMessage);	
+    	String authenticationAlert = "Authentication failed.";
+    	Assert.assertThat(getAlertContent(), IsCollectionContaining.hasItem(authenticationAlert));
     }
-    
+    private List<String> getAlertContent() {
+        List<String> alertMessages = new ArrayList<String>();
+
+        for(WebElement message : alertMessage) {
+            alertMessages.add(message.getText());
+        }
+        System.out.println(alertMessages);
+        return alertMessages;
+    }
 }
