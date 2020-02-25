@@ -36,7 +36,7 @@ public class LoginTest {
 		homePage.goToLoginPage();
 		LoginPage loginPage = new LoginPage ();
 		loginPage.loginUser("andrze@test.com", "qwert");
-		loginPage.passwordAlert();
+		loginPage.registrationAlert();
 	}
 	
 	@Test //TC1.4

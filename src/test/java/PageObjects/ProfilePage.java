@@ -25,12 +25,7 @@ public void profilePageVeryfication() {
 	String expectedTitle = "MY ACCOUNT";
 	
     String actualTitle = driver.findElement(By.cssSelector("#center_column > h1")).getText();
-	if (actualTitle.contentEquals(expectedTitle)){
-        System.out.println("Test Passed!");
-    } else {
-        System.out.println("Test Failed");
-    }
-
+	if (actualTitle.contentEquals(expectedTitle))
     System.out.println(actualTitle);	
-}
+	}
 }
